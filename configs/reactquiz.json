@@ -1,0 +1,25 @@
+{
+    "https://moodle.videotesting.org": [{
+        "default": true,
+        "client_id": "WPrhgmVqZOaGBVx",
+        "auth_login_url": "https://moodle.videotesting.org/mod/lti/auth.php",
+        "auth_token_url": "https://moodle.videotesting.org/mod/lti/token.php",
+        "auth_audience": null,
+        "key_set_url": "https://moodle.videotesting.org/mod/lti/certs.php",
+        "key_set": null,
+        "private_key_file": "private.key",
+        "public_key_file": "public.key",
+        "deployment_ids": ["3"]
+    }, {
+        "default": false,
+        "client_id": "client_id2",
+        "auth_login_url": "auth_login_url2",
+        "auth_token_url": "auth_token_url2",
+        "auth_audience": null,
+        "key_set_url": "key_set_url2",
+        "key_set": null,
+        "private_key_file": "private.key",
+        "public_key_file": "public.key",
+        "deployment_ids": ["deployment_id3", "deployment_id4"]
+    }]
+}

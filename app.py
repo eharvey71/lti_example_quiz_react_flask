@@ -1,7 +1,7 @@
 import os, pprint, datetime
 
 from questions import questions
-from db_methods import drop_db_table, create_db_table, get_questions, get_question_by_id, insert_quiz_question, update_question, delete_question
+from dbmethods import drop_db_table, create_db_table, get_questions, get_question_by_id, insert_quiz_question, update_question, delete_question
 
 from tempfile import mkdtemp
 from flask import Flask, request, jsonify, render_template, url_for
@@ -71,11 +71,6 @@ def get_jwk_from_public_key(key_name):
 # LTI-related routes
 ###############################################################
 
-@app.route('/')
-def index_redir():
-    # Reached if the user hits example.com/ instead of example.com/index.html
-    return render_template('index.html')
-
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     tool_conf = ToolConfJsonFile(get_lti_config_path())
@@ -120,7 +115,6 @@ def launch():
 
 @app.route('/api/score/<launch_id>/<earned_score>/', methods=['POST'])
 def score(launch_id, earned_score):
-    print('score POST')
     tool_conf = ToolConfJsonFile(get_lti_config_path())
     flask_request = FlaskRequest()
     launch_data_storage = get_launch_data_storage()
@@ -140,7 +134,7 @@ def score(launch_id, earned_score):
     grades = message_launch.get_ags()
     sc = Grade()
     sc.set_score_given(earned_score) \
-        .set_score_maximum(100) \
+        .set_score_maximum(5) \
         .set_timestamp(timestamp) \
         .set_activity_progress('Completed') \
         .set_grading_progress('FullyGraded') \
@@ -148,7 +142,7 @@ def score(launch_id, earned_score):
 
     sc_line_item = LineItem()
     sc_line_item.set_tag('score') \
-        .set_score_maximum(100) \
+        .set_score_maximum(5) \
         .set_label('Score')
     if resource_link_id:
         sc_line_item.set_resource_id(resource_link_id)

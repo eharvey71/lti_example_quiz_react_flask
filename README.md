@@ -1,8 +1,15 @@
 # Simple LTI 1.3 Quiz App
 
-A Single page App built with React and Tailwind on top of Flask.
+A Single Page App built with React and Tailwind CSS on top of a Flask backend, which handles the following:
 
-Uses the excellent pylti1p3 library for Python.
+- Database interactions - SQLite in our example.
+  
+- APIs for CRUD operations on the database.
+  
+- LTI 1.3 Tool - messaging and grade passback testing.
+  
+
+Uses the excellent [pylti1p3](https://pypi.org/project/PyLTI1p3/) library for Python.
 
 A project run-through can be found here:
 
